@@ -36,3 +36,8 @@
 
   border-radius: 999px;
 }
+
+.container .taskList {
+  display: flex;
+  flex-direction: column;
+}

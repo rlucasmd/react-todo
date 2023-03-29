@@ -1,7 +1,12 @@
 .container {
   display: flex;
   width: 100%;
-
+  gap: 8px;
+  padding: 1rem;
+  border: 1px solid var(--gray-400);
+  border-radius: 8px;
+  background-color: var(--gray-500);
+  margin-bottom: 0.75rem;
 }
 
 .container .roundedCheckbox {
@@ -41,4 +46,34 @@
   border-left: 2px solid;
   border-color: var(--gray-100);
   transform: rotate(-45deg);
+}
+
+.container .content {
+  font-size: 0.875rem;
+}
+
+.deleteButton {
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: transparent;
+  padding: 5px;
+  border-radius: 8px;
+  min-width: 34px;
+  min-height: 34px;
+}
+
+.deleteButton:hover {
+  background-color: var(--gray-400);
+}
+
+.deleteButton {
+  transition: background-color 0.3s;
+}
+
+.deleteButton svg path {
+  transition: fill 0.3s;
+}
+
+.deleteButton:hover svg path {
+  fill: var(--danger)
 }

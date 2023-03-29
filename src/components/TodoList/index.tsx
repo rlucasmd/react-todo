@@ -17,11 +17,13 @@ function TodoList() {
           <span>0 de 0</span>
         </div>
       </header>
-      {
-        todoList.map((todo) => (
-          <Todo key={todo} />
-        ))
-      }
+      <div className={styled.taskList}>
+        {
+          todoList.map((todo) => (
+            <Todo key={todo} />
+          ))
+        }
+      </div>
     </section>
   );
 }
