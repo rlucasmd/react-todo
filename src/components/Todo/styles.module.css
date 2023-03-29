@@ -1,1 +1,44 @@
-.container {}
+.container {
+  display: flex;
+  width: 100%;
+
+}
+
+.container .roundedCheckbox {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  background-color: transparent;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  appearance: none;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.container .roundedCheckbox:checked {
+  background-color: var(--purple-dark);
+  border: 1px solid var(--purple-dark);
+}
+
+.container .roundedCheckbox:checked:hover {
+  background-color: var(--purple);
+  border: 1px solid var(--purple);
+}
+
+
+.container .roundedCheckbox:checked:before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 5px;
+  display: flex;
+  width: 8px;
+  height: 4px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  border-color: var(--gray-100);
+  transform: rotate(-45deg);
+}

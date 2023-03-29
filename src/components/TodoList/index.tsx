@@ -8,12 +8,12 @@ function TodoList() {
   return (
     <section className={styled.container}>
       <header>
-        <div>
+        <div className={styled.createdTodos}>
           <strong>Tarefas criadas </strong>
           <span>0</span>
         </div>
-        <div>
-          <strong>Concluidas </strong>
+        <div className={styled.completedTodos}>
+          <strong>Concluídas </strong>
           <span>0 de 0</span>
         </div>
       </header>
