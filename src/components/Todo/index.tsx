@@ -1,13 +1,47 @@
+import { Dispatch, SetStateAction } from "react";
 import styled from "./styles.module.css";
 
-function Todo() {
+export type TodoProps = {
+  id: string;
+  title: string;
+  checked: boolean;
+}
+
+type Props = TodoProps & {
+  setTodos: Dispatch<SetStateAction<TodoProps[]>>;
+  todos: TodoProps[];
+}
+
+function Todo({ id, title, checked, todos, setTodos }: Props) {
+  function handleToggleCheckedTodo(todoId: string) {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === todoId)
+        return { ...todo, checked: !todo.checked };
+      return { ...todo };
+    });
+    setTodos(state => newTodos);
+  }
+  function handleDeleteTodo(todoId: string) {
+    const newTodos = todos.filter(todo => todo.id !== todoId);
+    setTodos(newTodos);
+  }
   return (
     <div className={styled.container}>
-      <input type="checkbox" className={styled.roundedCheckbox} />
-      <span className={styled.content}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione debitis suscipit ullam aut voluptates iusto recusandae tenetur repellat ipsam, eum obcaecati saepe?
-      </span>
-      <button className={styled.deleteButton}>
+      <div className={styled.wrapper}>
+        <input
+          type="checkbox"
+          className={styled.roundedCheckbox}
+          checked={checked}
+          onClick={() => handleToggleCheckedTodo(id)}
+        />
+        <span className={styled.content}>
+          {title}
+        </span>
+      </div>
+      <button
+        className={styled.deleteButton}
+        onClick={() => handleDeleteTodo(id)}
+      >
         <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M8.20214 4.98548H6.87158V10.5073H8.20214V4.98548Z" fill="#808080" />
           <path d="M5.46239 4.98548H4.13184V10.5073H5.46239V4.98548Z" fill="#808080" />

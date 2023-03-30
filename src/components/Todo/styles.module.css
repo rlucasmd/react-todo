@@ -1,20 +1,26 @@
 .container {
   display: flex;
   width: 100%;
-  gap: 8px;
   padding: 1rem;
   border: 1px solid var(--gray-400);
   border-radius: 8px;
   background-color: var(--gray-500);
   margin-bottom: 0.75rem;
+  justify-content: space-between;
+}
+
+.container .wrapper {
+  display: flex;
+  gap: 8px;
 }
 
 .container .roundedCheckbox {
+  margin-top: 2px;
   position: relative;
-  width: 20px;
-  height: 20px;
-  min-height: 20px;
-  min-width: 20px;
+  width: 18px;
+  height: 18px;
+  min-height: 18px;
+  min-width: 18px;
   background-color: transparent;
   border: 2px solid var(--blue);
   border-radius: 50%;
@@ -40,8 +46,8 @@
   left: 4px;
   top: 5px;
   display: flex;
-  width: 8px;
-  height: 4px;
+  width: 7px;
+  height: 3px;
   border-bottom: 2px solid;
   border-left: 2px solid;
   border-color: var(--gray-100);
@@ -50,6 +56,11 @@
 
 .container .content {
   font-size: 0.875rem;
+}
+
+.roundedCheckbox:checked+.content {
+  text-decoration: line-through;
+  color: var(--gray-300);
 }
 
 .deleteButton {

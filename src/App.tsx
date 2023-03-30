@@ -3,15 +3,21 @@ import styled from "./App.module.css";
 import { TodoList } from "./components/TodoList";
 import { useState } from "react";
 import { TodoSubmitForm } from "./components/TodoSubmitForm";
+import { TodoProps } from "./components/Todo";
 
 function App() {
-  const [todos, setTodos] = useState("");
+  const [todos, setTodos] = useState<TodoProps[]>([]);
   return (
     <div className={styled.App}>
       <Header />
       <div className={styled.wrapper}>
-        <TodoSubmitForm />
-        <TodoList />
+        <TodoSubmitForm
+          setTodos={setTodos}
+        />
+        <TodoList
+          setTodos={setTodos}
+          todos={todos}
+        />
       </div>
     </div>
   );
