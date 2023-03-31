@@ -11,6 +11,18 @@ type TodoListProps = {
 function TodoList({ todos, setTodos }: TodoListProps) {
   const createdTodosCount = todos.length;
   const completedTodosCount = todos.filter(todo => todo.checked).length;
+  function handleDeleteATodo(id: string) {
+    const newTodos = todos.filter(todo => todo.id !== id);
+    setTodos(newTodos);
+  }
+  function handleToggleCheckATodo(id: string) {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id)
+        return { ...todo, checked: !todo.checked };
+      return { ...todo };
+    });
+    setTodos(newTodos);
+  }
   return (
     <section className={styled.container}>
       <header>
@@ -31,8 +43,8 @@ function TodoList({ todos, setTodos }: TodoListProps) {
               checked={todo.checked}
               title={todo.title}
               id={todo.id}
-              setTodos={setTodos}
-              todos={todos}
+              handleDeleteATodo={handleDeleteATodo}
+              handleToggleCheckATodo={handleToggleCheckATodo}
             />
           ))
         }

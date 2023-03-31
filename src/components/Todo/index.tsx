@@ -8,23 +8,11 @@ export type TodoProps = {
 }
 
 type Props = TodoProps & {
-  setTodos: Dispatch<SetStateAction<TodoProps[]>>;
-  todos: TodoProps[];
+  handleToggleCheckATodo: (id: string) => void;
+  handleDeleteATodo: (id: string) => void;
 }
 
-function Todo({ id, title, checked, todos, setTodos }: Props) {
-  function handleToggleCheckedTodo(todoId: string) {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === todoId)
-        return { ...todo, checked: !todo.checked };
-      return { ...todo };
-    });
-    setTodos(state => newTodos);
-  }
-  function handleDeleteTodo(todoId: string) {
-    const newTodos = todos.filter(todo => todo.id !== todoId);
-    setTodos(newTodos);
-  }
+function Todo({ id, title, checked, handleToggleCheckATodo, handleDeleteATodo }: Props) {
   return (
     <div className={styled.container}>
       <div className={styled.wrapper}>
@@ -32,7 +20,7 @@ function Todo({ id, title, checked, todos, setTodos }: Props) {
           type="checkbox"
           className={styled.roundedCheckbox}
           checked={checked}
-          onClick={() => handleToggleCheckedTodo(id)}
+          onClick={() => handleToggleCheckATodo(id)}
         />
         <span className={styled.content}>
           {title}
@@ -40,7 +28,7 @@ function Todo({ id, title, checked, todos, setTodos }: Props) {
       </div>
       <button
         className={styled.deleteButton}
-        onClick={() => handleDeleteTodo(id)}
+        onClick={() => handleDeleteATodo(id)}
       >
         <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M8.20214 4.98548H6.87158V10.5073H8.20214V4.98548Z" fill="#808080" />
